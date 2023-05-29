@@ -1,0 +1,78 @@
+package com.example.todolistmvp.detail;
+
+import static com.example.todolistmvp.helper.Const.RESULT_CODE_ADD_TASK;
+import static com.example.todolistmvp.helper.Const.RESULT_CODE_DELETE_TASK;
+import static com.example.todolistmvp.helper.Const.RESULT_CODE_UPDATE_TASK;
+
+import com.example.todolistmvp.model.Task;
+import com.example.todolistmvp.model.TaskDao;
+
+public class TaskDetailPresenter implements TaskDetailContract.Presenter {
+
+
+    private TaskDao taskDao;
+    private TaskDetailContract.View view;
+    Task task;
+
+    public TaskDetailPresenter(TaskDao taskDao, Task task) {
+        this.taskDao = taskDao;
+        this.task = task;
+    }
+
+    @Override
+    public void onDeleteTask() {
+        if (task != null) {
+            int result = taskDao.delete(task);
+            if (result > 0) {
+                view.returnResult(RESULT_CODE_DELETE_TASK, task);
+            }
+
+        }
+    }
+
+    @Override
+    public void saveChanges(int importance, String title) {
+
+        if (title.isEmpty()) {
+            view.showError("Task is empty");
+            return;
+        }
+
+        if (task == null) {
+            Task task = new Task();
+            task.setImportance(importance);
+            task.setTitle(title);
+            task.setComplete(false);
+            long id = taskDao.add(task);
+
+            task.setId(id);
+            view.returnResult(RESULT_CODE_ADD_TASK, task);
+        } else {
+            task.setTitle(title);
+            task.setImportance(importance);
+            task.setComplete(false);
+            int result = taskDao.update(task);
+            if (result > 0) {
+                view.returnResult(RESULT_CODE_UPDATE_TASK, task);
+            }
+        }
+
+    }
+
+
+    @Override
+    public void onAttach(TaskDetailContract.View view) {
+        this.view = view;
+        if (task != null) {
+            view.setDeleteBtnVisibility(true);
+            view.showTask(task);
+        }
+
+
+    }
+
+    @Override
+    public void onDetach() {
+
+    }
+}

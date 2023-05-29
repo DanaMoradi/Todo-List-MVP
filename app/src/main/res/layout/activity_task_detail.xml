@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".detail.TaskDetailActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            tools:ignore="RtlSymmetry">
+
+            <ImageView
+                android:id="@+id/backBtn"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="12dp"
+                android:contentDescription="@string/todo"
+                app:srcCompat="@drawable/ic_back_black_24dp" />
+
+            <TextView
+                android:id="@+id/toolbarTitleTv"
+                style="@style/h1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="12dp"
+                android:layout_toEndOf="@id/backBtn"
+                android:text="@string/edit_task" />
+
+            <ImageView
+                android:id="@+id/deleteTaskBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="24dp"
+                android:visibility="gone"
+                app:srcCompat="@drawable/ic_delete_24dp"
+                tools:ignore="ContentDescription"
+                tools:visibility="visible" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/lightGray" />
+
+        </RelativeLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="12dp"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <LinearLayout
+            android:id="@+id/importanceContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="12dp"
+            android:weightSum="3"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="DisableBaselineAlignment">
+
+            <FrameLayout
+                android:id="@+id/highImportanceBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/background_outline"
+                android:paddingVertical="12dp">
+
+                <TextView
+                    style="@style/h1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/high" />
+
+
+                <ImageView
+                    android:id="@+id/highImportanceCheckIv"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/shape_importance_high"
+                    android:padding="2dp"
+                    tools:ignore="ContentDescription" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/normalImportanceBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/background_outline"
+                android:paddingVertical="12dp">
+
+                <TextView
+                    style="@style/h1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/normal" />
+
+
+                <ImageView
+                    android:id="@+id/normalImportanceCheckIv"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/shape_importance_normal"
+                    android:padding="2dp"
+                    app:srcCompat="@drawable/ic_check_white_24dp"
+                    tools:ignore="ContentDescription" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/lowImportanceBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/background_outline"
+                android:paddingVertical="12dp">
+
+                <TextView
+                    style="@style/h1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/low" />
+
+
+                <ImageView
+                    android:id="@+id/lowImportanceCheckIv"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/shape_importance_low"
+                    android:padding="2dp"
+                    tools:ignore="ContentDescription" />
+
+            </FrameLayout>
+
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/taskEt"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginTop="30dp"
+            android:background="@null"
+            android:gravity="top"
+            android:hint="@string/hint"
+            android:textColor="@color/defaultTextColor"
+            android:textColorHint="@color/defaultTextColor"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/importanceContainer"
+            tools:ignore="Autofill,TextFields" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/saveChangesBtn"
+        style="@style/PrimaryButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="24dp"
+        android:elevation="12dp"
+        android:text="@string/saveChanges"
+        app:icon="@drawable/ic_check_white_24dp"
+        tools:ignore="TextContrastCheck" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

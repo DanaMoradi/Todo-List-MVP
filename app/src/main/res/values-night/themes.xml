@@ -1,0 +1,61 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Theme.TodoListMvp" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+
+    <style name="DefaultText" parent="Theme.TodoListMvp">
+        <item name="fontFamily">@font/primary_regular</item>
+    </style>
+
+    <style name="header" parent="DefaultText">
+        <item name="fontFamily">@font/primary_bold</item>
+    </style>
+
+    <style name="h1" parent="header">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+
+    <style name="h2" parent="header">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="h3" parent="header">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="p" parent="header">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="PrimaryButton" parent="Theme.TodoListMvp">
+        <item name="fontFamily">@font/primary_black</item>
+    </style>
+
+    <style name="OutlineButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="fontFamily">@font/primary_black</item>
+        <item name="android:textColor">@color/defaultTextColor</item>
+    </style>
+
+    <style name="SecondaryButton" parent="Theme.TodoListMvp">
+        <item name="backgroundTint">@color/secondaryButtonBackgroundTint</item>
+        <item name="android:textColor">@color/secondaryTextColor</item>
+        <item name="iconTint">@color/secondaryIconColor</item>
+        <item name="fontFamily">@font/primary_bold</item>
+        <item name="rippleColor">@color/secondaryIconColor</item>
+    </style>
+
+
+</resources>
